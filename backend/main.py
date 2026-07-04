@@ -20,15 +20,22 @@ app = FastAPI(
     version="1.0.0",
 )
 
+DEFAULT_CORS_ORIGINS = [
+    "http://localhost:5173",  # Vite dev server
+    "http://localhost:5176",  # Vite fallback dev server
+    "http://localhost:3000",  # CRA / other
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5176",
+]
+
+cors_origins = os.getenv("CORS_ORIGINS", "")
+allowed_origins = [
+    origin.strip() for origin in cors_origins.split(",") if origin.strip()
+] if cors_origins else DEFAULT_CORS_ORIGINS
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",  # Vite dev server
-        "http://localhost:5176",  # Vite fallback dev server
-        "http://localhost:3000",  # CRA / other
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5176",
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
