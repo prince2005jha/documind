@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.Python
+env/
+venv/
+.venv/
+backend/venv/
+.python-version
+.pytest_cache/
+
+# Virtual environment and local config
+.env
+.env.*
+*.local
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Build output
+*.log
+*.sqlite3
+*.db
+*.pid
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Project data and indexes
+backend/data/docs/
+backend/vectorstore/
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
